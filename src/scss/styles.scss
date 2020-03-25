@@ -1,2 +1,123 @@
 // Here goes your CSS
-@import 'layout/main';
+@import "layout/main";
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.login-form {
+  @extend %flex-center;
+  flex-direction: column;
+  padding: 35px 30px;
+  position: relative;
+
+  h1 {
+    font-family: "Lobster", sans-serif;
+    margin: 0;
+  }
+
+  input {
+    border: 1px #000000 solid;
+    padding: 15px;
+    margin-top: 15px;
+    width: calc(100% - 30px - 2px);
+  }
+
+  .checkbox-container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+    margin-top: 20px;
+    user-select: none;
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 19px;
+      width: 19px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+
+    .checkmark {
+      &:after {
+        left: 6px;
+        top: 2px;
+        height: 10px;
+        width: 5px;
+        border: 1px solid #000000;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .submit-btn {
+    margin-top: 30px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 0;
+    width: 100%;
+    height: 3em;
+    cursor: pointer;
+  }
+
+  .close-btn {
+    @extend %flex-center;
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: 1000;
+    font-family: Arial, sans-serif;
+    width: 30px;
+    height: 30px;
+    top: -5px;
+    right: -5px;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
