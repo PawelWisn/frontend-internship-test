@@ -23,12 +23,16 @@
       <!-- Display success message below -->
     </section>
     <div class="popup">
-      <form class="login-form">
+      <form
+        class="login-form"
+        name="login_form"
+        onsubmit="return validate_form()"
+      >
         <h1>Login</h1>
         <input type="email" name="email" placeholder="E-mail" />
         <input type="password" name="password" placeholder="Password" />
         <label class="checkbox-container">
-          <input type="checkbox" name="terms" />
+          <input type="checkbox" name="checkbox" />
           <span class="checkmark"></span>
           I agree to terms & conditions.
         </label>
