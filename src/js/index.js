@@ -2,6 +2,7 @@
 const clickme_btn = document.getElementById("show-popup-form");
 const close_btn = document.getElementsByClassName("close-btn")[0];
 const popup = document.getElementsByClassName("popup")[0];
+const submit_btn = document.getElementById("submit-btn");
 
 clickme_btn.addEventListener("click", () => {
   popup.style.display = "block";
@@ -9,6 +10,11 @@ clickme_btn.addEventListener("click", () => {
 
 close_btn.addEventListener("click", () => {
   popup.style.display = "none";
+});
+
+submit_btn.addEventListener("click", e => {
+  e.preventDefault();
+  return validate_form();
 });
 
 function validate_form() {
@@ -32,6 +38,10 @@ function validate_form() {
     alert("Please accept the terms and conditions");
     return false;
   } else {
-    return true;
+    setTimeout(function() {
+      popup.style.display = "none";
+      clickme_btn.innerHTML = "Thank you!";
+      return true;
+    }, 3000);
   }
 }
